@@ -1,2 +1,4 @@
 examples/node_modules
+examples/python/tmp*
+examples/python/myLib.pyc
 
