@@ -16,3 +16,13 @@
 	飛機只能在點與點之間移動
 	飛機停留在點上五秒鐘，即佔領該點
     若有一方正在佔領點點，另一方不得前往佔領
+
+## Installation
+Requires "node" and "npm". (Linux recommended)
+``` sh
+cd examples
+npm install
+node server.js
+```
+Finally, open "localhost:3000" in any browser to view the page. (Chrome Recommended)
+
