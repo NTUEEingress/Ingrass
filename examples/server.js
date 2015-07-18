@@ -42,17 +42,16 @@ var pserver = ws.createServer( function( connection ) {
 	var pro ;
 	var running ;
 	connection.on("text", function( str ) {
-		console.log( str );
+		//console.log( str );
 		if ( str[ 0 ] == 'o' ) {
 			running = false ;
 			connection.sendText( "end" ) ;
-			console.log( "inside" ) ;
 			pro.end(function (err) {
 				console.log('finished');
 				pro.kill() ;
 			});
 		} else if ( str[ 0 ] == 'C' ) {
-			console.log( connection ) ;
+			//console.log( connection ) ;
 			fs.writeFile('python/tmp.py',str.slice(1),function(err) {
 				if (err) return console.log(err);
 				console.log('tmp.py created');
@@ -60,7 +59,7 @@ var pserver = ws.createServer( function( connection ) {
 				connection.sendText( "start" ) ;
 				running = true ;
 				pro.on('message',function(message){
-					console.log(message);
+					//console.log(message);
 					connection.sendText( message ) ;
 				});
 				pro.on('error',function(err) {
