@@ -11,7 +11,7 @@ DOM.addEventListener('click', function(event) {
 	pconn.send( "C"+content ) ;
 });
 
-$.get( "/python/demo.py" , function(data) {
+$.get( "/python/default.py" , function(data) {
 	editor.setValue( data ) ;
 	editor.gotoLine( 1 ) ;
 }) ;
