@@ -7,9 +7,17 @@ from myLib import yOfPortal     # yOfPortal( a ): returns the y-coordinate of th
 
 # complete the following functions
 def distance( a , b ) :
+    return ( ( xOfPortal( a ) - xOfPortal( b ) ) ** 2 + ( yOfPortal( a ) - yOfPortal( b ) ) ** 2 ) ** 0.5
     # returns the Euclidean distance between portal "a" and portal "b"
 
 def findNearestTo( a ) :
+    x = 200000
+    y = -1
+    for i in range( 0 , 10 ) :
+        if distance( a , i ) < x and not isMine( i ) :
+            x = distance( a , i )
+            y = i
+    return y
     # returns the "id"(0~9) of the portal nearest to "a" (excluding "a" itself)
     # that is not yet dominated
 
