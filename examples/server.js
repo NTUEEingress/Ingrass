@@ -10,14 +10,6 @@ app.use(express.static('./'));
 app.use(cors());
 app.listen( 3000 ) ;
 
-//http.createServer(function (req, res) {
-//	res.setHeader('Access-Control-Allow-Origin', '*');
-//	res.setHeader('Access-Control-Request-Method', '*');
-//	res.setHeader('Access-Control-Allow-Methods', 'OPTIONS, GET');
-//	res.setHeader('Access-Control-Allow-Headers', '*');
-//	fs.createReadStream("index.html").pipe(res);
-//}).listen(8080)
-
 app.get('/', function(req, res) {
 	res.sendFile('index.html', {root: __dirname});
 });
@@ -44,14 +36,22 @@ var pserver = ws.createServer( function( connection ) {
 	connection.on("text", function( str ) {
 		//console.log( str );
 		if ( str[ 0 ] == 'o' ) {
-			running = false ;
-			connection.sendText( "end" ) ;
-			pro.end(function (err) {
-				console.log('finished');
-				pro.kill() ;
-			});
+			if ( running ) {
+				running = false ;
+				connection.sendText( "end" ) ;
+				pro.end(function (err) {
+					console.log('finished');
+				});
+			}
 		} else if ( str[ 0 ] == 'C' ) {
 			//console.log( connection ) ;
+			if ( running ) {
+				running = false ;
+				connection.sendText( "end" ) ;
+				pro.end(function (err) {
+					console.log('finished');
+				});
+			}
 			fs.writeFile('python/tmp.py',str.slice(1),function(err) {
 				if (err) return console.log(err);
 				console.log('tmp.py created');
@@ -90,9 +90,3 @@ var pserver = ws.createServer( function( connection ) {
 	})
 })
 pserver.listen( 8082 ) ;
-
-function pbroadcast(str) {
-	pserver.connections.forEach(function (connection) {
-		connection.sendText(str)
-	})
-}
