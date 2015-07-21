@@ -17,7 +17,7 @@ nextPortal = 0
 
 while True :
     if ( isMine( nextPortal ) ) :
-        nextPortal = findNearestTo( nowPortal )
+        nextPortal = findNearestTo( nextPortal )
         if ( nextPortal == -1 ) :
             break
         moveToPortal( nextPortal )
