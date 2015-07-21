@@ -8,7 +8,7 @@ var pysh = require('python-shell');
 
 app.use(express.static('./'));
 app.use(cors());
-app.listen( 3000 ) ;
+app.listen( 8080 ) ;
 
 app.get('/', function(req, res) {
 	res.sendFile('index.html', {root: __dirname});

@@ -1,27 +1,22 @@
 import time
 import math
-from myLib import moveToPortal
-from myLib import isMine
-from myLib import xOfPortal
-from myLib import yOfPortal
-# type codes below
+from myLib import moveToPortal  # moveToPortal( a ): triggers a movement toward a portal
+from myLib import isMine        # isMine( a ): returns whether the portal is dominated by you
+from myLib import xOfPortal     # xOfPortal( a ): returns the x-coordinate of the portal
+from myLib import yOfPortal     # yOfPortal( b ): returns the y-coordinate of the portal
+
+# complete the following functions
 def distance( a , b ) :
-    return math.sqrt( math.pow( xOfPortal( a ) - xOfPortal( b ) , 2 ) + math.pow( yOfPortal( a ) - yOfPortal( b ) , 2 ) )
+    # returns the Euclidean distance between portal "a" and portal "b"
 
 def findNearestTo( a ) :
-    dis = 100000
-    pid = -1
-    for i in range( 0 , 10 ) :
-        if ( i != a and distance( a , i ) < dis and not isMine( i ) ) :
-            dis = distance( a , i )
-            pid = i
-    return pid
+    # returns the "id"(0~9) of the portal nearest to "a" (excluding "a" itself)
+    # that is not yet dominated
 
-nowPortal = 0
+nextPortal = 0
 
 while True :
     if ( isMine( nextPortal ) ) :
-        nowPortal = nextPortal
         nextPortal = findNearestTo( nowPortal )
         if ( nextPortal == -1 ) :
             break
