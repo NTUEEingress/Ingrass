@@ -1,2 +1,2 @@
 cd ind
-nodejs server.js
+node server.js
