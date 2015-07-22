@@ -14,7 +14,7 @@ def isMine( x ) :
     sys.stdout.flush()
     host = input()
     #print( "zzz: "+host )
-    return host == "true"
+    return int( host )
 
 def xOfPortal( x ) :
     time.sleep( 0.01 )
