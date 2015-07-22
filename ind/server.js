@@ -73,13 +73,6 @@ var pserver = ws.createServer( function( connection ) {
 					running = false ;
 					connection.sendText( "end" ) ;
 				});
-				/*
-				pro.end(function (err) {
-					console.log('finished');
-					if (err) throw err;
-					console.log('finished');
-				});
-				*/
 			});
 		} else {
 			if ( running == true )
