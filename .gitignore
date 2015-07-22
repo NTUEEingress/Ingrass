@@ -1,4 +1,5 @@
-examples/node_modules
-examples/python/myLib.pyc
-examples/python/tmp.py
+**/node_modules
+**/python/myLib.pyc
+**/python/tmp.py
+**/python/tmp.pyc
 
