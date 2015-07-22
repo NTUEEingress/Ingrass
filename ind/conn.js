@@ -53,7 +53,6 @@ pconn.onopen = function() {
 			if ( des >= 0 && des < 10 ) {
 				connection.send( ( Math.floor( Date.now() ) * 100 + uid * 10 + des ).toString() ) ;
 			} else if ( des >= 10 && des < 20 ) {
-				console.log( ret ) ;
 				if ( controlled[ des - 10 ] == uid ) {
 					pconn.send( "1" ) ;
 				} else if ( controlled[ des - 10 ] == 1 - uid ) {
