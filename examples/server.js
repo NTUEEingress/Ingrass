@@ -55,7 +55,7 @@ var pserver = ws.createServer( function( connection ) {
 			fs.writeFile('python/tmp.py',str.slice(1),function(err) {
 				if (err) return console.log(err);
 				console.log('tmp.py created');
-				pro = new pysh( 'tmp.py' , {args:['-u']});
+				pro = new pysh( 'tmp.py' , {args:['-u'],pythonPath:"python3"});
 				connection.sendText( "start" ) ;
 				running = true ;
 				pro.on('message',function(message){
@@ -73,13 +73,6 @@ var pserver = ws.createServer( function( connection ) {
 					running = false ;
 					connection.sendText( "end" ) ;
 				});
-				/*
-				pro.end(function (err) {
-					console.log('finished');
-					if (err) throw err;
-					console.log('finished');
-				});
-				*/
 			});
 		} else {
 			if ( running == true )

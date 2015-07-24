@@ -12,16 +12,16 @@ def isMine( x ) :
     assert( x >= 0 and x < 10 )
     print( x + 10 )
     sys.stdout.flush()
-    host = raw_input()
+    host = input()
     #print( "zzz: "+host )
-    return host == "true"
+    return int( host )
 
 def xOfPortal( x ) :
     time.sleep( 0.01 )
     assert( x >= 0 and x < 10 )
     print( x + 20 )
     sys.stdout.flush()
-    host = raw_input()
+    host = input()
     return float( host )
 
 def yOfPortal( x ) :
@@ -29,6 +29,6 @@ def yOfPortal( x ) :
     assert( x >= 0 and x < 10 )
     print( x + 30 )
     sys.stdout.flush()
-    host = raw_input()
+    host = input()
     return float( host )
 
